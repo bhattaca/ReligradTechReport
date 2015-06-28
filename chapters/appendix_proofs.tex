@@ -800,3 +800,12 @@ w_\eb = w_\eb \leftarrow (1-\alpha) p + \alpha p'
 where $\alpha = (\sigma-s_p)/(s_{p'}-s_p)$.
 Point $w_\eb$ is an approximation of the intersection of the isosurface
 and the grid edge.
+
+Instead of the singular valued decomposition of the square matrix $M^T M$,
+we could have used the singular valued decomposition of $M$.
+The condition number of $M^T M$ is the square of the condition number of $M$
+so using the SVD of $M$ is more numerically stable.
+However, because the algorithm sets small eigenvalues to zero,
+the increased numerical stability does not change the results of our algorithm.
+
+
