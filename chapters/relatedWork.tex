@@ -1,0 +1,55 @@
+
+\section{Related Work}
+
+Algorithms for constructing isosurfaces with sharp features
+are given
+in~\cite{ab-fpmmo-03,hwco-cmsaf-05,jlsw-dchd-02,kbsh-fssev-01,
+ms-ispmg-10,sw-dcss-02,sw-dmcpc-04,Varadhan:2003:fss,zhk-dctps-04}.
+All these algorithms require
+exact surface normals as part of the input.
+
+\MergeSharp~\cite{bw-cisec-13} is an algorithm
+for constructing isosurfaces with sharp features from gradient data.
+Input to the algorithm is gradient grid data,
+scalar values and gradient vectors at each vertex of a regular grid.
+The algorithm can handle noise in the gradient vectors 
+and missing gradient vectors.
+
+Salman et al.~\cite{sym-fpmg-10} and Dey et al.~\cite{dgqsww-fprss-12}
+reconstructed piecewise smooth surfaces with sharp features 
+from point cloud data
+by separately placing mesh vertices on the sharp features
+and vertices inside the smooth patches.
+They place ``protecting ball'' around mesh vertices on sharp features
+so that no vertices inside the smooth patches are placed 
+near the sharp features.
+Algorithm \MergeSharp does something similar,
+merging grid cubes around sharp features so that isosurface vertices
+on sharp features are ``isolated'' away from other vertices.
+
+Fleishman et al.~\cite{fcs-rmlsf-2005} introduced a least-squares technique to reconstruct a piecewise smooth surface. The sharp features are reconstructed as intersection of these smooth regions. Oztireli et al.~\cite{Oeztireli2009} extended the moving least square reconstruction to sharp features using kernel regression. The strength of robust kernel regression, makes this method robust to noise. Avron et al.~\cite{avron2010L} used a l1-sparse approach to reconstruct sharp features from point set.
+
+Formulas for improving the numerical accuracy of gradient computations
+from scalar data
+are given in~\cite{aml-ger-10,ham-thqge-11,mmmy-cnes-97}.
+These formulas assume the gradient vector field is smooth
+and do not work when there are discontinuities in the vector field.
+They also do not work when there is noise in the input scalar data.
+
+Anisotropic diffusion is a technique by which the filtering
+of surface normals or field gradients changes based on local curvature.
+Gradients or normals in low curvature regions are moved to agree 
+with their neighbors.
+Gradients or normals in high curvature regions are moved only slightly.
+Anisotropic diffusion for mesh smoothing is described
+in~\cite{bx-adsfs-03,cdr-agdsp-00,twbo-gssad-02,twbo-gspnm-03}.
+Tasziden et. al.~\cite{tw-adsnf-03} used anisotropic diffusion 
+to preserve features in isosurface reconstruction.
+
+Features in papers on anisotropic diffusion are high curvature regions,
+not regions with normal or gradient discontinuities (infinite curvature.)
+Anisotropic diffusion applied to surfaces or gradient fields
+with discontinuities will filter noise from smooth regions,
+but it will not improve estimations at discontinuities
+or assist in identifying such discontinuities.
+

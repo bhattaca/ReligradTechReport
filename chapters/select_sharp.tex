@@ -1,0 +1,33 @@
+% Selecting sharp vertices
+
+\section{Sparsifying Isosurface Vertices}
+\label{sec:select_sharp}
+
+The algorithm in the previous section produces one isosurface vertex
+for each grid cube intersected by the isosurface.
+Points on sharp edges and corners are identified 
+as such by the algorithm.
+However, isosurface vertices on sharp features
+may lie very close together.
+If those vertices are used for mesh generation
+or are joined together to form sharp curves,
+they need to sparsified so there is spacing between them.
+Fortunately, the grid structure makes this easy.
+We use a procedure from~\cite{bw-cisec-13}
+to sparsify the set of isosurface vertices on sharp features.
+
+Let $S$ be the list of isosurface vertices on sharp features
+sorted by increasing distance from the grid cube centers.
+Select the first vertex $v$ in $S$.
+Let $\cb$ be the cube containing $v$.
+Delete any vertices of $S$ which lie in $\cb$ 
+or in any of the 26 grid cubes which share a vertex with $\cb$.
+Repeat until $S$ contains no more vertices.
+If all grid edges have length $L$,
+then the resulting isosurface vertices are never closer
+than distance $L$.
+Figure~\subref*{fig:setA.crop1.mesh.2} shows the original sharp edge vertices and figure~\subref*{fig:setA.crop1.mesh.3} shows the sparse set for an edge in a real CT dataset.
+
+
+
+
